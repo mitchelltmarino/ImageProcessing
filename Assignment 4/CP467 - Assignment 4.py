@@ -5,11 +5,11 @@ from PIL import Image
 from skimage.transform import resize
 
 # Name of the image to apply filter to.
-IMAGE_NAME = "T3.png"
+IMAGE_NAME = "T12.png"
 
 # New dimensions for the symbols.
-NEW_WIDTH = 30
-NEW_HEIGHT = 30
+NEW_WIDTH = 20
+NEW_HEIGHT = 40
 
 # Get path of file.
 path = os.path.abspath(os.path.dirname(sys.argv[0]))
@@ -236,7 +236,7 @@ for key, symbolDict in symbolData.items():
     # Store the symbol image.
     symbolDict['Symbol_Image'] = componentImage
     # Store the resized symbol, which is resized using sci-kit image libarary.
-    symbolDict['Symbol_Image_Resized'] = resize(componentImage, (NEW_WIDTH, NEW_HEIGHT), anti_aliasing=False)
+    symbolDict['Symbol_Image_Resized'] = resize(componentImage, (NEW_HEIGHT, NEW_WIDTH), anti_aliasing=False)
 
 
 # This output array will be the output image. Initially, it is all white.
@@ -244,9 +244,9 @@ output_array = np.full((image.size[1], image.size[0]), 255)
 
 # Add each symbol to the output image array, using the top left corner of the original location as an anchor point.
 for key, symbolDict in symbolData.items():
-    output_array[symbolDict['Top']:symbolDict['Top']+NEW_HEIGHT, symbolDict['Left']:symbolDict['Left']+NEW_HEIGHT]= np.copy(symbolDict['Symbol_Image_Resized'])
+    output_array[symbolDict['Top']:symbolDict['Top']+NEW_HEIGHT, symbolDict['Left']:symbolDict['Left']+NEW_WIDTH]= np.copy(symbolDict['Symbol_Image_Resized'])
 
 # Show the output image, and save it as OutputImage.png.
 imageOut = Image.fromarray(output_array)
 imageOut.show()
-imageOut.convert("L").save(path+"\\OutputImage.png")
+imageOut.convert("L").save(path+"\\OutputImage2.png")

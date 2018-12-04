@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image
 
 # Name of the image to apply filter to.
-IMAGE_NAME = "Capture.png"
+IMAGE_NAME = "Eye.jpg"
 
 # Get Path
 path = os.path.abspath(os.path.dirname(sys.argv[0]))
@@ -34,4 +34,4 @@ for rowIndex in range(image.size[1]):
 imageOut = Image.fromarray(arr)
 # Show output image.
 imageOut.show()
-imageOut.convert("L").save(path+"\\T12.png")
+imageOut.convert("L").save(path+"\\Eye.png")
