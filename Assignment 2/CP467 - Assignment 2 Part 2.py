@@ -5,7 +5,7 @@ from PIL import Image
 from skimage.transform import resize
 
 # Name of the image to apply filter to.
-IMAGE_NAME = "T3.png"
+IMAGE_NAME = "Characters.png"
 
 # Get path of file.
 path = os.path.abspath(os.path.dirname(sys.argv[0]))

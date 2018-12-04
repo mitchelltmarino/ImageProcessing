@@ -34,4 +34,4 @@ for rowIndex in range(image.size[1]):
 imageOut = Image.fromarray(arr)
 # Show output image.
 imageOut.show()
-imageOut.convert("L").save(path+"\\Eye.png")
+imageOut.convert("L").save(path+"\\Output.png")
